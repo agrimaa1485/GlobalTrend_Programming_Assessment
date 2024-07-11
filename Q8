@@ -1,0 +1,35 @@
+[7/11/2024 11:29 PM] agrima: #include <iostream>
+
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int main() {
+    int a = 56, b = 98;
+    std::cout << "GCD of " << a << " and " << b << " is " << gcd(a, b) << std::endl;
+    return 0;
+}
+[7/11/2024 11:29 PM] agrima: #include <iostream>
+#include <vector>
+#include <algorithm>
+
+int maxDifference(const std::vector<int>& nums) {
+    if (nums.empty()) return 0;
+    int minElement = nums[0];
+    int maxDiff = 0;
+    for (int num : nums) {
+        if (num - minElement > maxDiff) {
+            maxDiff = num - minElement;
+        }
+        if (num < minElement) {
+            minElement = num;
+        }
+    }
+    return maxDiff;
+}
+

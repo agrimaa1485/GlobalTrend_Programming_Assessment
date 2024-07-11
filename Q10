@@ -1,0 +1,19 @@
+int main() {
+    std::string str1 = "HelloWorld";
+    std::cout << "String \"" << str1 << "\" contains only alphabetic characters: " 
+              << (isAlphabetic(str1) ? "true" : "false") << std::endl; // Output: true
+    
+    std::string str2 = "Hello123";
+    std::cout << "String \"" << str2 << "\" contains only alphabetic characters: " 
+              << (isAlphabetic(str2) ? "true" : "false") << std::endl; // Output: false
+    
+    std::string str3 = "Hello World";
+    std::cout << "String \"" << str3 << "\" contains only alphabetic characters: " 
+              << (isAlphabetic(str3) ? "true" : "false") << std::endl; // Output: false
+    
+    std::string str4 = "Hello_World";
+    std::cout << "String \"" << str4 << "\" contains only alphabetic characters: " 
+              << (isAlphabetic(str4) ? "true" : "false") << std::endl; // Output: false
+
+    return 0;
+}

@@ -1,0 +1,18 @@
+int main() {
+    std::vector<int> nums = {2, 3, 10, 6, 4, 8, 1};
+    std::cout << "Maximum difference is " << maxDifference(nums) << std::endl;
+    return 0;
+}
+[7/11/2024 11:31 PM] agrima: #include <iostream>
+#include <string>
+#include <cctype>
+
+bool isAlphabetic(const std::string& str) {
+    for (char c : str) {
+        if (!std::isalpha(static_cast<unsigned char>(c))) {
+            return false;
+        }
+    }
+    return true;
+}
+

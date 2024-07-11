@@ -1,0 +1,66 @@
+#include <iostream>
+#include <algorithm>
+#include <limits.h>
+
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+class Solution {
+public:
+    int maxPathSum(TreeNode* root) {
+        int maxSum = INT_MIN;
+        maxPathSumHelper(root, maxSum);
+        return maxSum;
+    }
+    
+private:
+    int maxPathSumHelper(TreeNode* node, int& maxSum) {
+        if (node == nullptr) {
+            return 0;
+        }
+
+        // Recursively get the maximum path sum for left and right subtrees
+        int leftGain = std::max(maxPathSumHelper(node->left, maxSum), 0);
+        int rightGain = std::max(maxPathSumHelper(node->right, maxSum), 0);
+
+        // Current path sum including the current node
+        int currentPathSum = node->val + leftGain + rightGain;
+
+        // Update the maximum path sum found so far
+        maxSum = std::max(maxSum, currentPathSum);
+
+        // Return the maximum gain if continue the same path
+        return node->val + std::max(leftGain, rightGain);
+    }
+};
+
+// Helper function to create a sample tree for testing
+TreeNode* createSampleTree() {
+    TreeNode* root = new TreeNode(-10);
+    root->left = new TreeNode(9);
+    root->right = new TreeNode(20);
+    root->right->left = new TreeNode(15);
+    root->right->right = new TreeNode(7);
+    return root;
+}
+
+int main() {
+    Solution solution;
+
+    TreeNode* root = createSampleTree();
+    std::cout << "Maximum path sum: " << solution.maxPathSum(root) << std::endl; // Output: 42
+
+    // Free allocated memory
+    delete root->right->right;
+    delete root->right->left;
+    delete root->right;
+    delete root->left;
+    delete root;
+
+    return 0;
+}

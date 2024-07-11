@@ -1,0 +1,16 @@
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(const std::string& s) {
+        std::unordered_map<char, int> charIndexMap;
+        int maxLength = 0, start = 0;
+        
+        for (int end = 0; end < s.size(); ++end) {
+            char currentChar = s[end];
+            
+            // If the character is already in the map, move the start to the right of the previous index
+            if (charIndexMap.find(currentChar) != charIndexMap.end() && charIndexMap[currentChar] >= start) {
+                start = charInde
